@@ -1,14 +1,14 @@
 // Global Variables
 
-const zip = document.getElementById('formGridCode_zip');
-const feeling = document.getElementById('formGridCode_feelings');
+const zip = document.getElementById('zip');
+const feeling = document.getElementById('feelings');
 const generate = document.getElementById('generate');
 const form = document.getElementById("form");
 
 
 // Create New Date 
 let d = new Date();
-let newDate = d.getMonth()+'-'+d.getDate()+'-'+d.getFullYear();
+let newDate = d.getMonth() +1 +'-'+d.getDate()+'-'+d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const baseURL = "http://api.openweathermap.org/data/2.5/forecast?zip=" //524901&appid={API key}
@@ -67,10 +67,10 @@ const  updateUi = async () => {
     const getProjectData = await fetch('/all');
     try {
         const allData = await getProjectData.json();
-        document.getElementById('city').innerHTML =  `🏙️ ${allData[0].city} 🏙️`;
-        document.getElementById('date').innerHTML =  ` ${allData[0].date} `;
-        document.getElementById('temp').innerHTML =  ` ${allData[0].temperature} °C `;
-        document.getElementById('content').innerHTML =  ` ${allData[0].content} `;
+        document.getElementById('city').innerHTML =  `🏙️ ${allData.city} 🏙️`;
+        document.getElementById('date').innerHTML =  ` ${allData.date} `;
+        document.getElementById('temp').innerHTML =  ` ${allData.temperature} °C `;
+        document.getElementById('content').innerHTML =  ` ${allData.content} `;
     }catch (error) {
         console.log('Error :', error);
     }
